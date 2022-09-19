@@ -19,7 +19,7 @@ app.use(helmet.hsts(
 
   app.use(
     helmet.dnsPrefetchControl({
-      allow: false,
+      allow: false
     })
   )
 
