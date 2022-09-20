@@ -2,73 +2,36 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
-app.use(helmet.hidePoweredBy())
-app.use(helmet.frameguard(
-  {action: 'deny'}
-))
-app.use(helmet.xssFilter())
-app.use(helmet.noSniff())
-app.use(helmet.ieNoOpen())
-
 const ninetyDaysInSeconds = 90*24*60*60
-app.use(helmet.hsts(
+
+app.use(helmet(
   {
-    maxAge: ninetyDaysInSeconds,
-    force: true
-  }))
-
-  app.use(
-    helmet.dnsPrefetchControl({
+    frameguard: {
+      action: 'deny'   
+    },
+    hsts: {
+      maxAge: ninetyDaysInSeconds,
+      force: true
+    },
+    dnsPrefetchControl: {
       allow: false
-    })
-  )
-
- app.use(helmet.noCache())
-
- app.use(
-  helmet.contentSecurityPolicy({
+    },
     directives: {
       "default-src": ["'self'"],
       "script-src": ["'self'", "trusted-cdn.com"]
-    }
-  })
-);
+    },
+    noCache: true
+  }
+));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * == Properties used in main helmet Object ==
+ * 
+ * app.use(helmet.hidePoweredBy())
+ * app.use(helmet.xssFilter())
+ * app.use(helmet.noSniff())
+ * app.use(helmet.ieNoOpen())
+*/
 
 
 module.exports = app;
