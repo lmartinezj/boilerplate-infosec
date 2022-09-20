@@ -23,6 +23,8 @@ app.use(helmet.hsts(
     })
   )
 
+ app.use(helmet.noCache())
+
 
 
 
