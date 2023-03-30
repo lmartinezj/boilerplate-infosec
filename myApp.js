@@ -8,8 +8,9 @@ app.use(helmet.hidePoweredBy())
 app.use(helmet(
   {
     frameguard: {
-      action: 'DENY'   
-    },
+      action: 'deny'   
+    }
+    /*,
     hsts: {
       maxAge: ninetyDaysInSeconds,
       force: true
@@ -22,7 +23,9 @@ app.use(helmet(
       "script-src": ["'self'", "trusted-cdn.com"]
     },
     noCache: true
+    */
   }
+  
 ));
 
 /**
