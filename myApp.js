@@ -6,6 +6,8 @@ const ninetyDaysInSeconds = 90*24*60*60
 
 app.use(helmet.hidePoweredBy())
 app.use(helmet.xssFilter());
+app.use(helmet.noSniff())
+app.use(helmet.ieNoOpen())
 app.use(helmet.frameguard(
      { action: "deny" }
     /*,
@@ -23,7 +25,7 @@ app.use(helmet.frameguard(
     noCache: true
     */
 ));
-app.use(helmet.noSniff())
+
 
 /**
  * == Properties used in main helmet Object ==
