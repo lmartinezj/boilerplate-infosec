@@ -8,6 +8,7 @@ app.use(helmet.hidePoweredBy())
 app.use(helmet.xssFilter());
 app.use(helmet.noSniff())
 app.use(helmet.ieNoOpen())
+app.helmet(noCache())
 app.use(helmet.frameguard(
   { 
     action: "deny"
@@ -17,7 +18,7 @@ app.use(helmet.frameguard(
       "default-src": ["'self'"],
       "script-src": ["'self'", "trusted-cdn.com"]
     },
-    noCache: true
+    
     */
 ));
 app.use(helmet.hsts(
