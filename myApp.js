@@ -15,41 +15,6 @@ app.use(helmet(
     }
   }
 ))
-/** 
-app.use(helmet.hidePoweredBy())
-app.use(helmet.xssFilter());
-app.use(helmet.noSniff())
-app.use(helmet.ieNoOpen())
-app.use(helmet.noCache())
-app.use(helmet.frameguard(
-  { 
-    action: "deny"
-  }  
-));
-app.use(helmet.hsts(
-  {
-    maxAge: ninetyDaysInSeconds,
-    force: true
-  }
-));
-app.use(helmet.dnsPrefetchControl(
-  {
-    allow: false
-  }
-));
-
-app.use(helmet.contentSecurityPolicy(
-  {
-    directives: {
-      "default-src": ["'self'"],
-      "script-src": ["'self'", "trusted-cdn.com"]
-    }
-  }
-));
-/*
-  ,
-    
-*/
 
 /**
  * == Properties used in main helmet Object ==
