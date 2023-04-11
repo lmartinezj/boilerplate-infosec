@@ -13,13 +13,6 @@ app.use(helmet.frameguard(
   { 
     action: "deny"
   }  
-  /*
-    directives: {
-      "default-src": ["'self'"],
-      "script-src": ["'self'", "trusted-cdn.com"]
-    },
-    
-    */
 ));
 app.use(helmet.hsts(
   {
@@ -27,13 +20,24 @@ app.use(helmet.hsts(
     force: true
   }
 ));
-app.use(
-  helmet.dnsPrefetchControl({
+app.use(helmet.dnsPrefetchControl(
+  {
     allow: false
-  })
-)
+  }
+));
 
-
+app.use(helmet.contentSecurityPolicy(
+  {
+    directives: {
+      "default-src": ["'self'"],
+      "script-src": ["'self'", "trusted-cdn.com"]
+    }
+  }
+));
+/*
+  ,
+    
+*/
 
 /**
  * == Properties used in main helmet Object ==
