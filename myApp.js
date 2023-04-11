@@ -10,11 +10,7 @@ app.use(helmet.noSniff())
 app.use(helmet.ieNoOpen())
 app.use(helmet.frameguard(
   { 
-    action: "deny",
-    hsts: {
-      maxAge: ninetyDaysInSeconds,
-      force: true
-    }
+    action: "deny"
   }  
   /*,
     dnsPrefetchControl: {
@@ -26,6 +22,12 @@ app.use(helmet.frameguard(
     },
     noCache: true
     */
+));
+app.use(helmet.hsts(
+  {
+    maxAge: ninetyDaysInSeconds,
+    force: true
+  }
 ));
 
 
