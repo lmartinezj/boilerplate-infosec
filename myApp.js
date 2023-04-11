@@ -12,10 +12,7 @@ app.use(helmet.frameguard(
   { 
     action: "deny"
   }  
-  /*,
-    dnsPrefetchControl: {
-      allow: false
-    },
+  /*
     directives: {
       "default-src": ["'self'"],
       "script-src": ["'self'", "trusted-cdn.com"]
@@ -29,6 +26,12 @@ app.use(helmet.hsts(
     force: true
   }
 ));
+app.use(
+  helmet.dnsPrefetchControl({
+    allow: false
+  })
+)
+
 
 
 /**
