@@ -8,7 +8,7 @@ app.use(helmet.hidePoweredBy())
 app.use(helmet.xssFilter());
 app.use(helmet.noSniff())
 app.use(helmet.ieNoOpen())
-app.helmet(noCache())
+app.use(helmet.noCache())
 app.use(helmet.frameguard(
   { 
     action: "deny"
